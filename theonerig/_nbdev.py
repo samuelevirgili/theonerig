@@ -159,6 +159,7 @@ modules = ["core.py",
            "synchro/extracting.py",
            "synchro/processing.py",
            "leddome.py",
+           "surprise/processing.py",
            "testdata.py"]
 
 doc_url = "https://Tom-TBT.github.io/theonerig/"
