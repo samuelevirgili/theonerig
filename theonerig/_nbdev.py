@@ -147,6 +147,12 @@ index = {"DataChunk": "00_core.ipynb",
          "get_dome_positions": "13_leddome.ipynb",
          "as_cartesian": "13_leddome.ipynb",
          "as_spherical": "13_leddome.ipynb",
+         "prior_p_m_num": "20_surprise.processing.ipynb",
+         "prior_p_m_denum": "20_surprise.processing.ipynb",
+         "p_d": "20_surprise.processing.ipynb",
+         "p_d_m": "20_surprise.processing.ipynb",
+         "summing_function": "20_surprise.processing.ipynb",
+         "surprise": "20_surprise.processing.ipynb",
          "load_vivo_2p": "99_testdata.ipynb"}
 
 modules = ["core.py",
