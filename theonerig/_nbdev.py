@@ -153,6 +153,11 @@ index = {"DataChunk": "00_core.ipynb",
          "p_d_m": "20_surprise.processing.ipynb",
          "summing_function": "20_surprise.processing.ipynb",
          "surprise": "20_surprise.processing.ipynb",
+         "mixed_stim_finder": "20_surprise.processing.ipynb",
+         "altern_stim_finder": "20_surprise.processing.ipynb",
+         "tripl_stim_finder": "20_surprise.processing.ipynb",
+         "finder_of_both": "20_surprise.processing.ipynb",
+         "psth": "20_surprise.processing.ipynb",
          "load_vivo_2p": "99_testdata.ipynb"}
 
 modules = ["core.py",
