@@ -189,8 +189,11 @@ def psth(num,function,stimulus,cell, reps,ampl=None):
     reps=# of reps of flashes before the missing one
     ampl=amplitude of the flases. Needed only for mixed stim.
     '''
+    if ampl:
+        globals()["times"+str(num)]=function(stimulus,reps,ampl)
+    else:
+        globals()["times"+str(num)]=function(stimulus,reps)
 
-    globals()["times"+str(num)]=function(stimulus,reps)
     print(globals()["times"+str(num)].shape)
 
     rows=len(globals()["times"+str(num)])
