@@ -6,6 +6,7 @@ __all__ = ['prior_p_m_num', 'prior_p_m_denum', 'p_d', 'p_d_m', 'summing_function
 # Cell
 from functools import partial
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 from sklearn import cluster
 import scipy.ndimage as ndimage
