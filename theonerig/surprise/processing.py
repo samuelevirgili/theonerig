@@ -180,7 +180,7 @@ def finder_of_both(stimulus,half):
             print("No matches!")
     return np.array(timesB), np.array(timesC)
 
-def psth(num,function,stimulus,cell, reps,ampl=None):
+def psth(num,function,stimulus,cell, reps,ampl=None, resp):
     '''function that plots a raster plot and consequent psth over trials for a given series of stimuli.
     num=# of different raster that I generate in the notebook
     function= different finder from the above depending on which type of stimulus I am analyzing
@@ -188,8 +188,9 @@ def psth(num,function,stimulus,cell, reps,ampl=None):
     cell=# the ID of the neuron
     reps=# of reps of flashes before the missing one
     ampl=amplitude of the flases. Needed only for mixed stim.
+    resp= the response to the stimulus
     '''
-    if ampl:
+    if ampl != None:
         globals()["times"+str(num)]=function(stimulus,reps,ampl)
     else:
         globals()["times"+str(num)]=function(stimulus,reps)
