@@ -180,7 +180,7 @@ def finder_of_both(stimulus,half):
             print("No matches!")
     return np.array(timesB), np.array(timesC)
 
-def psth(num,function,stimulus,cell, reps,ampl=None, resp):
+def psth(num,function,stimulus, resp, cell, reps,ampl=None):
     '''function that plots a raster plot and consequent psth over trials for a given series of stimuli.
     num=# of different raster that I generate in the notebook
     function= different finder from the above depending on which type of stimulus I am analyzing
