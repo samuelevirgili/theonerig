@@ -88,15 +88,17 @@ def mixed_stim_finder(stimulus,reps, ampl):
     '''a function that finds out the time instants where a series of given reps of given amplitude ends. The given number
     is the time at which there is the onset of the last flash, so 5 frames later there is the missing stim'''
     times=[]
-    i=np.where(stimulus !=255)[0][0]
+    i=np.where(stimulus[5:] !=255)[0][0]+5
     j=0
     while i<len(stimulus):
-        if list(np.where(stimulus[i:] !=255)[0]):
+        if list(np.where(stimulus[i:i+10] !=255)[0]):
             i=np.where(stimulus[i:] !=255)[0][0]+i
+            #print(i)
         if stimulus[i]==ampl:
             j+=1
             if j==reps:
-                if stimulus[i+5]!=ampl:
+                finish=stimulus[i+5:i+15]==np.zeros((10))+255
+                if finish.all() :
                     times.append(i)
         else:
             j=0
@@ -108,22 +110,24 @@ def altern_stim_finder(stimulus,reps):
     The given time is the time at which the first of the two As of the surprising duplet onsets. The surprise one is than
     expected not before 5 frames after the reported time'''
     times=[]
-    i=np.where(stimulus !=255)[0][0]
+    i=np.where(stimulus[5:] !=255)[0][0]+5
     j=0
+    k=0
     while i<len(stimulus)-6:
-        #if list(np.where(stimulus[i-2:] !=255)[0]):
-            #i=np.where(stimulus[i:] !=255)[0][0]+i
+        if list(np.where(stimulus[i:i+10] !=255)[0]):
+            i=np.where(stimulus[i:i+10]==255)[0][0]+i
+            i=np.where(stimulus[i:i+10]!=255)[0][0]+i
         #print(i)
-        i+=5
+        #print(j)
         if stimulus[i]==170:
             j+=1
-        elif j==reps and stimulus[i]==0:
-            times.append(i-5)
-            j=0
-        elif stimulus[i]==0:
-            j=0
-        i+=5
-        #print(j)
+            k=0
+        else:
+            k+=1
+            if k==2:
+                if j==reps:
+                    times.append(i-5)
+                j=0
         if reps==16:
             if i>14431:
                 break
