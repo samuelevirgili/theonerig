@@ -185,7 +185,7 @@ def finder_of_both(stimulus,half):
             print("No matches!")
     return np.array(timesB), np.array(timesC)
 
-def psth(num,function,stimulus, resp, cell, reps,ampl=None):
+def psth(num,function,stimulus, resp, cell, reps,ampl=None,window=40,show=True):
     '''function that plots a raster plot and consequent psth over trials for a given series of stimuli.
     num=# of different raster that I generate in the notebook
     function= different finder from the above depending on which type of stimulus I am analyzing
@@ -194,6 +194,8 @@ def psth(num,function,stimulus, resp, cell, reps,ampl=None):
     reps=# of reps of flashes before the missing one
     ampl=amplitude of the flases. Needed only for mixed stim.
     resp= the response to the stimulus
+    window= the size of the span that the psth comprises
+    show= if show is true the psth is shown, otherwise it is just saved
     '''
     if ampl != None:
         globals()["times"+str(num)]=function(stimulus,reps,ampl)
@@ -203,11 +205,12 @@ def psth(num,function,stimulus, resp, cell, reps,ampl=None):
     print(globals()["times"+str(num)].shape)
 
     rows=len(globals()["times"+str(num)])
-    window=20
     globals()["data"+str(num)]=np.zeros((rows, window*3))
     for i,k in enumerate(globals()["times"+str(num)]):
         globals()["data"+str(num)][i]=resp[k+5-2*window:k+5+window,cell]
-    plt.figure()
-    plt.imshow(globals()["data"+str(num)])
-    plt.figure()
-    plt.plot(np.sum(globals()["data"+str(num)], axis=0))
+    if show:
+        plt.figure()
+        plt.imshow(globals()["data"+str(num)])
+        plt.figure()
+        plt.plot(np.sum(globals()["data"+str(num)], axis=0))
+    return np.sum(globals()["data"+str(num)], axis=0)
